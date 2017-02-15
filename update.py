@@ -25,18 +25,17 @@ for f in os.listdir(s_dir):
 		parser = PDFParser(open(pdf_file,  'rb'))
 		doc_info = PDFDocument(parser).info[0]
 		# create cover
-		title = doc_info.get('Title', 'NA')
+		title = doc_info.get('Title', f)
 		cover = s_cover_dir + title + s_img_ext
 		author = doc_info.get('Author', 'NA')
 
 		convert_image(pdf_file, cover)
-		print(doc_info)
-		print("https://www.google.co.in/search?q={} by {}".format(title,author))
+		print(pdf_file)
+		#print("https://www.google.co.in/search?q={} by {}".format(title,author))
 		books.append({
 			'author': author,
 			'title': title,
 			'level': 'Intermediate',
-			'title': doc_info.get('Title', 'NA'),
 			'cover': cover,
 			'authorUrl': "https://www.google.co.in/search?q="+author ,
 			'info': 'NA',
