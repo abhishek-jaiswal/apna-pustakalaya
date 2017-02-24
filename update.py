@@ -25,7 +25,7 @@ for f in os.listdir(s_dir):
 		parser = PDFParser(open(pdf_file,  'rb'))
 		doc_info = PDFDocument(parser).info[0]
 		# create cover
-		title = doc_info.get('Title', f)
+		title = doc_info.get('Title', f).replace(' ', '_')
 		cover = s_cover_dir + title + s_img_ext
 		author = doc_info.get('Author', 'NA')
 
